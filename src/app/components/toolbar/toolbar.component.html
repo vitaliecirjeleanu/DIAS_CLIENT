@@ -7,7 +7,11 @@
   <ng-template pTemplate="center">
     <div class="flex flex-wrap align-items-center gap-5">
       @for (action of toolbarActions; track $index) {
-      <button class="toolbar__button p-link" data-test-name="toolbarAction">
+      <button
+        (click)="action.callback()"
+        class="toolbar__button p-link"
+        data-test-name="toolbarAction"
+      >
         <i [ngClass]="action.icon + ' text-2xl'"></i>
 
         <span>{{ action.label }}</span>
@@ -27,7 +31,7 @@
           "
         ></i>
 
-        <span>{{ theme() === THEME_OPTIONS.LIGHT ? 'Dark' : 'Light' }}</span>
+        <span>{{ theme() === THEME_OPTIONS.LIGHT ? "Dark" : "Light" }}</span>
       </button>
     </div>
   </ng-template>
