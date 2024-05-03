@@ -10,5 +10,5 @@ import { ActivatedRoute } from '@angular/router';
 export class TopicDetailsComponent {
   private readonly route = inject(ActivatedRoute);
 
-  public topicName = this.route.snapshot.paramMap.get('name')?.toUpperCase();
+  public topicName = this.route.snapshot.paramMap.get('name');
 }
