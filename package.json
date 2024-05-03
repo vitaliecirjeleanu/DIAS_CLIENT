@@ -36,8 +36,8 @@
     "jasmine-core": "~5.1.0",
     "jest": "^29.7.0",
     "stylelint": "^16.4.0",
+    "stylelint-config-recess-order": "^5.0.1",
     "stylelint-config-standard-scss": "^13.1.0",
-    "stylelint-order": "^6.0.4",
     "typescript": "~5.4.2"
   }
 }

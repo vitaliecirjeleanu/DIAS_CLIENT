@@ -1,18 +1,18 @@
 @import "primeflex/primeflex.scss";
 
 .toolbar {
-  backdrop-filter: blur(0.5rem);
+  color: var(--toolbar-text-color);
   background: var(--toolbar-background);
+  backdrop-filter: blur(0.5rem);
   border: 0;
   border-radius: 0;
-  color: var(--toolbar-text-color);
 
   &__avatar-image {
-    border-radius: 50%;
-    color: inherit;
-    height: 2.5rem;
-    object-fit: cover;
     width: 2.5rem;
+    height: 2.5rem;
+    color: inherit;
+    object-fit: cover;
+    border-radius: 50%;
   }
 
   &__button {

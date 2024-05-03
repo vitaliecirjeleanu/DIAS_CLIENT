@@ -1,13 +1,9 @@
 {
-  "extends": "stylelint-config-standard-scss",
-  "plugins": [
-		"stylelint-order"
-	],
-	"rules": {
-		"order/order": [
-			"custom-properties",
-			"declarations"
-		],
-    "order/properties-alphabetical-order": true
-	}
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-recess-order"
+  ],
+  "rules": {
+    "order/order": ["custom-properties", "declarations"]
+  }
 }
