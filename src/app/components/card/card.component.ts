@@ -5,11 +5,13 @@ import {
   HostListener,
   Input,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 
 import { CardModule } from 'primeng/card';
 import { PrimengCommonModule } from '../../../shared/modules/primeng-common.module';
 import { KeyboardCode } from '../../../shared/types';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'card',
@@ -43,5 +45,9 @@ export class CardComponent {
     this.navigateToRoute();
   }
 
-  private navigateToRoute(): void {}
+  private readonly router = inject(Router);
+
+  private navigateToRoute(): void {
+    this.router.navigate(['/topic', this.title.toLocaleLowerCase()]);
+  }
 }

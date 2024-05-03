@@ -1,9 +1,9 @@
 :host {
   footer {
-    background-color: var(--footer-background);
-    color: var(--footer-text-color);
     display: flex;
     justify-content: center;
     padding: 2rem;
+    color: var(--footer-text-color);
+    background-color: var(--footer-background);
   }
 }

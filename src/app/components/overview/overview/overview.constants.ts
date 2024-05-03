@@ -21,8 +21,8 @@ export const CARDS: Card[] = [
   { id: 2, title: 'Music', route: 'music-url' },
   { id: 1, title: 'Real Estate', route: 'real-estate-url' },
   { id: 2, title: 'Trading', route: 'trading-url' },
-  // { id: 1, title: 'Sport', route: 'sport-url' },
-  // { id: 2, title: 'Music', route: 'music-url' },
-  // { id: 1, title: 'Real Estate', route: 'real-estate-url' },
-  // { id: 2, title: 'Trading', route: 'trading-url' },
+  { id: 1, title: 'Sport', route: 'sport-url' },
+  { id: 2, title: 'Music', route: 'music-url' },
+  { id: 1, title: 'Real Estate', route: 'real-estate-url' },
+  { id: 2, title: 'Trading', route: 'trading-url' },
 ];
