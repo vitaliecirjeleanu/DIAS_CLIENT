@@ -7,6 +7,12 @@ import {
   KeyboardEventType,
   MouseEventType,
 } from '../../../shared/types';
+import { MockModule } from 'ng-mocks';
+import { Router, RouterModule } from '@angular/router';
+
+class MockRouter {
+  navigate = jest.fn();
+}
 
 describe('CardComponent', () => {
   let component: CardComponent;
@@ -17,6 +23,7 @@ describe('CardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CardComponent],
+      providers: [{ provide: Router, useClass: MockRouter }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CardComponent);

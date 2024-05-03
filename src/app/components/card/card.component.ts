@@ -48,6 +48,9 @@ export class CardComponent {
   private readonly router = inject(Router);
 
   private navigateToRoute(): void {
-    this.router.navigate(['/topic', this.title.toLocaleLowerCase()]);
+    this.router.navigate([
+      'topic',
+      this.title.split(' ').join('').toLowerCase(),
+    ]);
   }
 }
