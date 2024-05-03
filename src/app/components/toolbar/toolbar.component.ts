@@ -11,12 +11,10 @@ import { PrimengCommonModule } from '../../../shared/modules/primeng-common.modu
 import { Avatar } from '../../../shared/types/avatar.types';
 import { ThemeService } from '../../../shared/services/theme-service/theme.service';
 import { CommonModule } from '@angular/common';
-import {
-  AVATAR_DEFAULT_ACTIONS,
-  TOOLBAR_DEFAULT_ACTIONS,
-} from './toolbar.constants';
-import { Theme } from '../../../shared/types';
+import { AVATAR_DEFAULT_ACTIONS } from './toolbar.constants';
+import { Theme, ToolbarAction } from '../../../shared/types';
 import { PrimeIcons } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'toolbar',
@@ -36,12 +34,31 @@ export class ToolbarComponent {
     actions: AVATAR_DEFAULT_ACTIONS, // here will be a check to add custom actions
   };
 
-  public toolbarActions = TOOLBAR_DEFAULT_ACTIONS;
+  public toolbarActions = this.getToolbarActions();
 
-  private themeService = inject(ThemeService);
+  private readonly themeService = inject(ThemeService);
+  private readonly router = inject(Router);
   public theme = this.themeService.theme;
 
   public toggleTheme(): void {
     this.themeService.toggleTheme();
+  }
+
+  private getToolbarActions(): ToolbarAction[] {
+    const home: ToolbarAction = {
+      label: 'Home',
+      icon: PrimeIcons.HOME,
+      callback: () => {
+        this.router.navigate(['overview']);
+      },
+    };
+
+    const search: ToolbarAction = {
+      label: 'Search',
+      icon: PrimeIcons.SEARCH,
+      callback: () => console.log('Search'),
+    };
+
+    return [home, search];
   }
 }

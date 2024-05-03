@@ -5,7 +5,6 @@ import { ToolbarComponent } from './toolbar.component';
 import { ThemeService } from '../../../shared/services/theme-service/theme.service';
 import { ChangeDetectionStrategy, signal } from '@angular/core';
 import { MouseEventType, Theme } from '../../../shared/types';
-import { TOOLBAR_DEFAULT_ACTIONS } from './toolbar.constants';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 class MockThemeService {
@@ -35,12 +34,25 @@ describe('ToolbarComponent', () => {
   });
 
   describe('template', () => {
-    test('should display provided actions', () => {
+    test('should display actions', () => {
       const displayedActions: HTMLButtonElement[] =
         fixture.nativeElement.querySelectorAll(
           '[data-test-name="toolbarAction"]'
         );
-      expect(displayedActions.length).toEqual(TOOLBAR_DEFAULT_ACTIONS.length);
+      expect(displayedActions.length).toBeGreaterThan(0);
+    });
+
+    test('should call action callback when clicked', () => {
+      const homeCallback = jest.fn();
+      const action: HTMLButtonElement = fixture.nativeElement.querySelector(
+        '[data-test-name="toolbarAction"]'
+      );
+
+      component.toolbarActions[0].callback = homeCallback;
+      fixture.detectChanges();
+      action.dispatchEvent(new MouseEvent(MouseEventType.Click));
+
+      expect(homeCallback).toHaveBeenCalledTimes(1);
     });
 
     describe('themeAction', () => {

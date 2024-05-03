@@ -1,6 +1,7 @@
 import { PrimeIcons } from 'primeng/api';
 
 export type ToolbarAction = {
-  label: string;
+  callback: () => void;
   icon: PrimeIcons;
+  label: string;
 };
