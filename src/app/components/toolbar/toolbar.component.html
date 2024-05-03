@@ -1,0 +1,59 @@
+<p-toolbar styleClass="toolbar">
+  <ng-template pTemplate="start">
+    <button class="toolbar__button p-link">
+      <i class="pi pi-bars text-2xl"></i>
+    </button>
+  </ng-template>
+  <ng-template pTemplate="center">
+    <div class="flex flex-wrap align-items-center gap-5">
+      @for (action of toolbarActions; track $index) {
+      <button class="toolbar__button p-link" data-test-name="toolbarAction">
+        <i [ngClass]="action.icon + ' text-2xl'"></i>
+
+        <span>{{ action.label }}</span>
+      </button>
+      }
+
+      <button
+        (click)="toggleTheme()"
+        class="toolbar__button p-link"
+        data-test-name="toggleThemeAction"
+      >
+        <i
+          [ngClass]="
+            (theme() === THEME_OPTIONS.LIGHT
+              ? PRIME_ICONS.MOON
+              : PRIME_ICONS.SUN) + ' text-2xl'
+          "
+        ></i>
+
+        <span>{{ theme() === THEME_OPTIONS.LIGHT ? 'Dark' : 'Light' }}</span>
+      </button>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <div class="flex align-items-center gap-2" data-test-name="toolbarAvatar">
+      <p-menu #menu [model]="avatar.actions" [popup]="true"></p-menu>
+
+      <button
+        (click)="menu.toggle($event)"
+        class="toolbar__button p-link"
+        data-test-name="toolbarAvatarImage"
+      >
+        @if (avatar.imagePath) {
+        <!--here will be the proper user image path-->
+        <img src="../../../assets/user.jpg" class="toolbar__avatar-image" />
+        } @else {
+        <i class="pi pi-user text-2xl"></i>
+        }
+      </button>
+
+      @if(avatar.name) {
+      <span class="font-bold" data-test-name="toolbarAvatarName">
+        {{ avatar.name }}
+      </span>
+      }
+    </div>
+  </ng-template>
+</p-toolbar>

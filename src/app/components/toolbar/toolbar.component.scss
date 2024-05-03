@@ -1,0 +1,30 @@
+@import "primeflex/primeflex.scss";
+
+.toolbar {
+  backdrop-filter: blur(0.5rem);
+  background: var(--toolbar-background);
+  border: 0;
+  border-radius: 0;
+  color: var(--toolbar-text-color);
+
+  &__avatar-image {
+    border-radius: 50%;
+    color: inherit;
+    height: 2.5rem;
+    object-fit: cover;
+    width: 2.5rem;
+  }
+
+  &__button {
+    color: inherit;
+
+    @include styleclass(
+      "flex flex-column justify-content-center align-items-center text-xs h-3rem w-3rem border-circle transition-all transition-duration-200"
+    );
+
+    &:hover,
+    &:hover + span {
+      color: var(--toolbar-button-hover);
+    }
+  }
+}
