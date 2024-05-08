@@ -1,3 +1,5 @@
-@for (card of cards; track card.id) {
-<card [title]="card.title" [route]="card.route"></card>
-} @empty { Nothing here yet... }
+@if (cardsVM$ | async; as cards ) { @for (card of cards; track card.id) {
+<card [name]="card.name"></card>
+} } @else {
+<p>Nothing here yet...</p>
+}
