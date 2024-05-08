@@ -1,5 +1,5 @@
 export type Card = {
   id: number;
-  title: string;
-  route: string;
+  name: string;
+  topics: string[];
 };

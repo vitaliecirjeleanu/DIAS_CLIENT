@@ -23,8 +23,7 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
 })
 export class CardComponent {
-  @Input() public title = '';
-  @Input() public route = '';
+  @Input() public name = '';
 
   @HostBinding('attr.tabindex') public tabIndex = '0';
   @HostBinding('attr.role') public role = 'button';
@@ -50,7 +49,7 @@ export class CardComponent {
   private navigateToRoute(): void {
     this.router.navigate([
       'topic',
-      this.title.split(' ').join('').toLowerCase(),
+      this.name.split(' ').join('').toLowerCase(),
     ]);
   }
 }
