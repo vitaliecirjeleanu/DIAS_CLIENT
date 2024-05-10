@@ -5,10 +5,10 @@ import {
   computed,
   inject,
 } from '@angular/core';
-import { CardComponent } from '../../card/card.component';
 import { CommonModule } from '@angular/common';
-import { Store } from '../../../state';
-import { LoadStatus } from '../../../../shared/types/load.types';
+import { CardComponent } from '../card/card.component';
+import { Store } from '../../state';
+import { LoadStatus } from '../../../shared/types/load.types';
 
 @Component({
   selector: 'overview',
