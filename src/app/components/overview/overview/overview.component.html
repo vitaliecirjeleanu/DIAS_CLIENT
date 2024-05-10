@@ -1,5 +1,5 @@
-@if (cardsVM$ | async; as cards ) { @for (card of cards; track card.id) {
-<card [name]="card.name"></card>
-} } @else {
-<p>Nothing here yet...</p>
-}
+@if (isLoading()) {
+<p>Loading...</p>
+} @else { @for (topic of topics(); track topic.id) {
+<card [name]="topic.name"></card>
+} }

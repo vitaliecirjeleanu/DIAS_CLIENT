@@ -1,9 +1,14 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  computed,
+  inject,
+} from '@angular/core';
 import { CardComponent } from '../../card/card.component';
-import { map } from 'rxjs';
-import { Card } from '../../../../shared/types';
-import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { Store } from '../../../state';
+import { LoadStatus } from '../../../../shared/types/load.types';
 
 @Component({
   selector: 'overview',
@@ -13,14 +18,15 @@ import { CommonModule } from '@angular/common';
   imports: [CommonModule, CardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OverviewComponent {
-  private readonly http = inject(HttpClient);
+export class OverviewComponent implements OnInit {
+  private readonly store = inject(Store);
 
-  public cardsVM$ = this.http
-    .get<Card[]>(
-      `${import.meta.env.NG_APP_API_BASE_URL}/${
-        import.meta.env.NG_APP_API_ALL_TOPICS
-      }`
-    )
-    .pipe(map((topics) => [...topics, ...topics])); // TODO: remove duplicate topics [they are just for scroll testing]
+  public readonly topics = this.store.topics;
+  public readonly isLoading = computed(
+    () => this.store.loadStatus() === LoadStatus.LOADING
+  );
+
+  public ngOnInit(): void {
+    this.store.loadTopics();
+  }
 }

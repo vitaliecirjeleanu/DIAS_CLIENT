@@ -1,4 +1,4 @@
-export type Card = {
+export type Topic = {
   id: number;
   name: string;
   topics: string[];
