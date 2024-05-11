@@ -1,9 +1,9 @@
 import { signalStore, withMethods, withState } from '@ngrx/signals';
 import { State } from './types';
-import { LoadStatus } from '../../shared/types/load.types';
 import { inject } from '@angular/core';
 import { HttpService } from '../../shared/services/http-service/http-service.service';
 import { loadTopics } from './actions';
+import { LoadStatus } from '../../shared/types';
 
 const initialState: State = {
   loadStatus: LoadStatus.NOT_LOADED,

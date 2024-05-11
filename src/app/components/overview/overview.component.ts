@@ -8,7 +8,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { CardComponent } from '../card/card.component';
 import { Store } from '../../state';
-import { LoadStatus } from '../../../shared/types/load.types';
+import { LoadStatus } from '../../../shared/types';
 
 @Component({
   selector: 'overview',

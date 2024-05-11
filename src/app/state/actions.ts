@@ -2,9 +2,9 @@ import { StateSignal, patchState } from '@ngrx/signals';
 import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { State } from './types';
 import { HttpService } from '../../shared/services/http-service/http-service.service';
-import { LoadStatus } from '../../shared/types/load.types';
 import { pipe, switchMap, tap } from 'rxjs';
 import { tapResponse } from '@ngrx/operators';
+import { LoadStatus } from '../../shared/types';
 
 export const loadTopics = (store: StateSignal<State>, service: HttpService) =>
   rxMethod<void>(
