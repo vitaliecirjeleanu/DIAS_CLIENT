@@ -1,5 +1,4 @@
-import { Topic } from '../../shared/types';
-import { LoadStatus } from '../../shared/types/load.types';
+import { LoadStatus, Topic } from '../../shared/types';
 
 export type State = {
   loadStatus: LoadStatus;
