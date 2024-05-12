@@ -1,9 +1,9 @@
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
-}
+declare var process: {
+  env: ProcessEnv;
+};
 
-interface ImportMetaEnv extends APIEndpoint {
-  readonly NODE_ENV: string;
+interface ProcessEnv extends APIEndpoint {
+  readonly NG_APP_ENV: string;
 }
 
 interface APIEndpoint {
@@ -13,3 +13,16 @@ interface APIEndpoint {
   readonly NG_APP_API_INT_FOOTBALL_RESULTS: string;
   readonly NG_APP_API_INT_FOOTBALL_SHOOTOUTS: string;
 }
+
+/*
+ ### use this setup when the "import.meta" jest error will be fixed ###
+ 
+ interface ImportMeta {
+   readonly env: ImportMetaEnv;
+ }
+ 
+ interface ImportMetaEnv extends APIEndpoint {
+   readonly NODE_ENV: string;
+ }
+  
+ */
