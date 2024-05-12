@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Topic } from '../../types';
 import { Observable, map } from 'rxjs';
+import { environment } from '../../../environments/envinronment';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +13,7 @@ export class HttpService {
   public getTopics(): Observable<Topic[]> {
     return this.http
       .get<Topic[]>(
-        `${import.meta.env.NG_APP_API_BASE_URL}/${
-          import.meta.env.NG_APP_API_ALL_TOPICS
-        }`
+        `${environment.api.baseUrl}/${environment.api.endpoints.topics}`
       )
       .pipe(map((topics) => [...topics, ...topics])); // TODO: remove duplicate topics [they are just for scroll testing]
   }
