@@ -2,14 +2,14 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { bypassLayerError } from '../../../utils/jsdom-layer-error-bypass';
 
 import { ToolbarComponent } from './toolbar.component';
-import { ThemeService } from '../../../shared/services/theme-service/theme.service';
 import { ChangeDetectionStrategy, signal } from '@angular/core';
 import { MouseEventType, Theme } from '../../../shared/types';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Store } from '../../state';
 
-class MockThemeService {
-  public toggleTheme(): void {}
-  public theme = signal(Theme.LIGHT);
+class MockStore {
+  theme = signal(Theme.LIGHT);
+  toggleTheme = jest.fn();
 }
 
 describe('ToolbarComponent', () => {
@@ -21,7 +21,7 @@ describe('ToolbarComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ToolbarComponent, NoopAnimationsModule],
-      providers: [{ provide: ThemeService, useClass: MockThemeService }],
+      providers: [{ provide: Store, useClass: MockStore }],
     })
       .overrideComponent(ToolbarComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default },
@@ -59,6 +59,10 @@ describe('ToolbarComponent', () => {
       let themeAction: HTMLButtonElement;
 
       beforeEach(() => {
+        const mockThemeElement = document.createElement('div');
+        mockThemeElement.id = 'app-theme';
+        document.body.appendChild(mockThemeElement);
+
         themeAction = fixture.nativeElement.querySelector(
           '[data-test-name="toggleThemeAction"]'
         );
