@@ -40,11 +40,8 @@ describe('Store', () => {
   describe('actions', () => {
     describe('toggleTheme', () => {
       test('should change the theme', () => {
-        jest.spyOn(store, 'toggleTheme');
-
         store.toggleTheme();
 
-        expect(store.toggleTheme).toHaveBeenCalledTimes(1);
         expect(store.theme()).toEqual(Theme.DARK);
       });
     });
