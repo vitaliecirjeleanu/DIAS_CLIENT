@@ -4,7 +4,12 @@ import { State } from './types';
 import { HttpService } from '../../shared/services/http-service/http-service.service';
 import { pipe, switchMap, tap } from 'rxjs';
 import { tapResponse } from '@ngrx/operators';
-import { LoadStatus } from '../../shared/types';
+import { LoadStatus, Theme } from '../../shared/types';
+
+export const toggleTheme = (store: StateSignal<State>) => () =>
+  patchState(store, (state) => ({
+    theme: state.theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT,
+  }));
 
 export const loadTopics = (store: StateSignal<State>, service: HttpService) =>
   rxMethod<void>(

@@ -9,12 +9,12 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { MenuModule } from 'primeng/menu';
 import { PrimengCommonModule } from '../../../shared/modules/primeng-common.module';
 import { Avatar } from '../../../shared/types/avatar.types';
-import { ThemeService } from '../../../shared/services/theme-service/theme.service';
 import { CommonModule } from '@angular/common';
 import { AVATAR_DEFAULT_ACTIONS } from './toolbar.constants';
 import { Theme, ToolbarAction } from '../../../shared/types';
 import { PrimeIcons } from 'primeng/api';
 import { Router } from '@angular/router';
+import { Store } from '../../state';
 
 @Component({
   selector: 'toolbar',
@@ -36,12 +36,17 @@ export class ToolbarComponent {
 
   public toolbarActions = this.getToolbarActions();
 
-  private readonly themeService = inject(ThemeService);
+  private readonly store = inject(Store);
   private readonly router = inject(Router);
-  public theme = this.themeService.theme;
+
+  public theme = this.store.theme;
 
   public toggleTheme(): void {
-    this.themeService.toggleTheme();
+    this.store.toggleTheme();
+
+    (
+      document.getElementById('app-theme') as HTMLLinkElement
+    ).href = `${this.store.theme()}.css`;
   }
 
   private getToolbarActions(): ToolbarAction[] {
