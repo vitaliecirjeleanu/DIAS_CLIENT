@@ -20,9 +20,8 @@ export const loadTopics = (store: StateSignal<State>, service: HttpService) =>
           tapResponse({
             next: (topics) =>
               patchState(store, { topics, loadStatus: LoadStatus.LOADED }),
-            error: (err) => {
+            error: () => {
               patchState(store, { loadStatus: LoadStatus.FAILED });
-              console.error(err);
             },
           })
         );

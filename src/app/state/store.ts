@@ -5,7 +5,7 @@ import { HttpService } from '../../shared/services/http-service/http-service.ser
 import { loadTopics, toggleTheme } from './actions';
 import { LoadStatus, Theme } from '../../shared/types';
 
-const initialState: State = {
+export const initialState: State = {
   loadStatus: LoadStatus.NOT_LOADED,
   theme: Theme.LIGHT,
   topics: [],
