@@ -2,9 +2,12 @@ import { MenuItem } from 'primeng/api';
 
 export const AVATAR_DEFAULT_ACTIONS: MenuItem[] = [
   {
-    label: 'Settings',
+    label: 'avatar.settings',
   },
   {
-    label: 'Sign out',
+    label: 'avatar.signOut',
+  },
+  {
+    label: 'avatar.signUp',
   },
 ];

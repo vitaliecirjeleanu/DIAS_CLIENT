@@ -9,8 +9,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-
 import { TRANSLATION_CONFIG } from './translation-module.config';
+import { provideAppInitializer } from './app.providers';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,7 +23,7 @@ import { TRANSLATION_CONFIG } from './translation-module.config';
     ToolbarComponent,
     TranslateModule.forRoot(TRANSLATION_CONFIG),
   ],
-  providers: [],
+  providers: [provideAppInitializer()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
