@@ -15,6 +15,7 @@ import { Theme, ToolbarAction } from '../../../shared/types';
 import { PrimeIcons } from 'primeng/api';
 import { Router } from '@angular/router';
 import { Store } from '../../state';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'toolbar',
@@ -29,16 +30,18 @@ export class ToolbarComponent {
   public readonly THEME_OPTIONS = Theme;
   public readonly PRIME_ICONS = PrimeIcons;
 
-  public avatar: Avatar = {
-    name: 'User Name',
-    actions: AVATAR_DEFAULT_ACTIONS, // here will be a check to add custom actions
-  };
-
-  public toolbarActions = this.getToolbarActions();
-
   private readonly store = inject(Store);
   private readonly router = inject(Router);
+  private readonly translate = inject(TranslateService);
 
+  public avatar: Avatar = {
+    name: 'User Name',
+    actions: AVATAR_DEFAULT_ACTIONS.map((action) => ({
+      ...action,
+      label: this.translate.instant(action.label ?? ''),
+    })), // here will be a check to add custom actions
+  };
+  public toolbarActions = this.getToolbarActions();
   public theme = this.store.theme;
 
   public toggleTheme(): void {
