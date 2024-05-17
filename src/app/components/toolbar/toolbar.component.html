@@ -1,6 +1,9 @@
 <p-toolbar styleClass="toolbar">
   <ng-template pTemplate="start">
-    <button class="toolbar__button p-link">
+    <button
+      [attr.aria-label]="'toolbar.sidebar' | translate"
+      class="toolbar__button p-link"
+    >
       <i class="pi pi-bars text-2xl"></i>
     </button>
   </ng-template>
@@ -14,7 +17,7 @@
       >
         <i [ngClass]="action.icon + ' text-2xl'"></i>
 
-        <span>{{ action.label }}</span>
+        <span>{{ action.label | translate }}</span>
       </button>
       }
 
@@ -31,7 +34,10 @@
           "
         ></i>
 
-        <span>{{ theme() === THEME_OPTIONS.LIGHT ? "Dark" : "Light" }}</span>
+        <span>{{
+          (theme() === THEME_OPTIONS.LIGHT ? "toolbar.dark" : "toolbar.light")
+            | translate
+        }}</span>
       </button>
     </div>
   </ng-template>
@@ -41,6 +47,7 @@
       <p-menu #menu [model]="avatar.actions" [popup]="true"></p-menu>
 
       <button
+        [attr.aria-label]="'avatar.menu' | translate"
         (click)="menu.toggle($event)"
         class="toolbar__button p-link"
         data-test-name="toolbarAvatarImage"

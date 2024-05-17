@@ -15,12 +15,18 @@ import { Theme, ToolbarAction } from '../../../shared/types';
 import { PrimeIcons } from 'primeng/api';
 import { Router } from '@angular/router';
 import { Store } from '../../state';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'toolbar',
   standalone: true,
-  imports: [ToolbarModule, MenuModule, PrimengCommonModule, CommonModule],
+  imports: [
+    ToolbarModule,
+    MenuModule,
+    PrimengCommonModule,
+    CommonModule,
+    TranslateModule,
+  ],
   templateUrl: './toolbar.component.html',
   styleUrl: './toolbar.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -54,7 +60,7 @@ export class ToolbarComponent {
 
   private getToolbarActions(): ToolbarAction[] {
     const home: ToolbarAction = {
-      label: 'Home',
+      label: 'toolbar.home',
       icon: PrimeIcons.HOME,
       callback: () => {
         this.router.navigate(['overview']);
@@ -62,7 +68,7 @@ export class ToolbarComponent {
     };
 
     const search: ToolbarAction = {
-      label: 'Search',
+      label: 'toolbar.search',
       icon: PrimeIcons.SEARCH,
       callback: () => console.log('Search'),
     };

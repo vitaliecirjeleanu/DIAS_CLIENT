@@ -1,5 +1,5 @@
 @if (isLoading()) {
 <p>Loading...</p>
 } @else { @for (topic of topics(); track topic.id) {
-<card [name]="topic.name"></card>
+<card [name]="topic.name | translate"></card>
 } }

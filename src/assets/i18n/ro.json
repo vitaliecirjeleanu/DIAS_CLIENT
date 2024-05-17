@@ -1,0 +1,29 @@
+{
+  "avatar": {
+    "settings": "Setări",
+    "signOut": "Deconectare",
+    "signUp": "Înregistrare",
+    "menu": "Deschideți Meniul Utilizatorului"
+  },
+  "toolbar": {
+    "home": "Acasă",
+    "search": "Căutare",
+    "dark": "Întunecat",
+    "light": "Luminos",
+    "sidebar": "Deschideți Bara Laterală"
+  },
+  "topics": {
+    "sport": "Sport",
+    "music": "Muzică",
+    "realEstate": "Imobiliare",
+    "trading": "Tranzacționare",
+    "ai": "IA",
+    "automotive": "Automobile",
+    "wealth": "Bogăție",
+    "scouting": "Scouting",
+    "books": "Cărți",
+    "gaming": "Jocuri",
+    "agriculture": "Agricultură",
+    "socialMedia": "Rețele Sociale"
+  }
+}

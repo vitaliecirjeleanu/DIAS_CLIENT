@@ -7,7 +7,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 export const TRANSLATION_CONFIG = {
-  defaultLanguage: 'en',
   loader: {
     provide: TranslateLoader,
     useFactory: HttpLoaderFactory,
