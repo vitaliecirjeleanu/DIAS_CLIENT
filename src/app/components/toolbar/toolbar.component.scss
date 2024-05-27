@@ -1,5 +1,3 @@
-@import "primeflex/primeflex.scss";
-
 .toolbar {
   color: var(--toolbar-text-color);
   background: var(--toolbar-background);
@@ -17,10 +15,6 @@
 
   &__button {
     color: inherit;
-
-    @include styleclass(
-      "flex flex-column justify-content-center align-items-center text-xs h-3rem w-3rem border-circle transition-all transition-duration-200"
-    );
 
     &:hover,
     &:hover + span {
