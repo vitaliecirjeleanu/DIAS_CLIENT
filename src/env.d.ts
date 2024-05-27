@@ -9,6 +9,7 @@ interface ProcessEnv extends APIEndpoint {
 interface APIEndpoint {
   readonly NG_APP_API_BASE_URL: string;
   readonly NG_APP_API_ALL_TOPICS: string;
+  readonly NG_APP_API_IMAGES: string;
   readonly NG_APP_API_INT_FOOTBALL_GOALSCORERS: string;
   readonly NG_APP_API_INT_FOOTBALL_RESULTS: string;
   readonly NG_APP_API_INT_FOOTBALL_SHOOTOUTS: string;

@@ -1,5 +1,5 @@
 @if (isLoading()) {
-<p>Loading...</p>
+<p-progressSpinner [ariaLabel]="'common.loading' | translate" />
 } @else { @for (topic of topics(); track topic.id) {
-<card [name]="topic.name | translate"></card>
+<card [topic]="topic"></card>
 } }

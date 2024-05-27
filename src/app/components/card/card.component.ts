@@ -10,20 +10,21 @@ import {
 
 import { CardModule } from 'primeng/card';
 import { PrimengCommonModule } from '../../../shared/modules/primeng-common.module';
-import { KeyboardCode } from '../../../shared/types';
+import { KeyboardCode, TopicVM } from '../../../shared/types';
 import { Router } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'card',
   standalone: true,
-  imports: [CardModule, PrimengCommonModule],
+  imports: [CardModule, PrimengCommonModule, TranslateModule],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
 export class CardComponent {
-  @Input() public name = '';
+  @Input() public topic!: TopicVM;
 
   @HostBinding('attr.tabindex') public tabIndex = '0';
   @HostBinding('attr.role') public role = 'button';
@@ -49,7 +50,7 @@ export class CardComponent {
   private navigateToRoute(): void {
     this.router.navigate([
       'topic',
-      this.name.split(' ').join('').toLowerCase(),
+      this.topic.name.split(' ').join('').toLowerCase(),
     ]);
   }
 }

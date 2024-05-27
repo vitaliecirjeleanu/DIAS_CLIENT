@@ -7,8 +7,7 @@ import {
   KeyboardEventType,
   MouseEventType,
 } from '../../../shared/types';
-import { MockModule } from 'ng-mocks';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 class MockRouter {
   navigate = jest.fn();

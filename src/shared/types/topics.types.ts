@@ -3,3 +3,5 @@ export type Topic = {
   name: string;
   topics: string[];
 };
+
+export type TopicVM = Topic & { nameL18nKey: string };

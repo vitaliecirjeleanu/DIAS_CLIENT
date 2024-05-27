@@ -1,29 +1,59 @@
 {
   "avatar": {
+    "logIn": "Log In",
+    "logOut": "Log Out",
+    "menu": "Open User Menu",
     "settings": "Settings",
-    "signOut": "Sign Out",
-    "signUp": "Sign Up",
-    "menu": "Open User Menu"
+    "signUp": "Sign Up"
+  },
+  "common": {
+    "loading": "Loading"
   },
   "toolbar": {
-    "home": "Home",
-    "search": "Search",
     "dark": "Dark",
+    "home": "Home",
     "light": "Light",
+    "search": "Search",
     "sidebar": "Open Sidebar"
   },
-  "topics": {
-    "sport": "Sport",
-    "music": "Music",
-    "realEstate": "Real Estate",
-    "trading": "Trading",
-    "ai": "AI",
-    "automotive": "Automotive",
-    "wealth": "Wealth",
-    "scouting": "Scouting",
-    "books": "Books",
-    "gaming": "Gaming",
-    "agriculture": "Agriculture",
-    "socialMedia": "Social Media"
+  "topic": {
+    "general": {
+      "agriculture": "Agriculture",
+      "ai": "AI",
+      "automotive": "Automotive",
+      "books": "Books",
+      "gaming": "Gaming",
+      "music": "Music",
+      "realEstate": "Real Estate",
+      "scouting": "Scouting",
+      "socialMedia": "Social Media",
+      "sport": "Sport",
+      "trading": "Trading",
+      "wealth": "Wealth"
+    },
+    "specific": {
+      "action": {
+        "save": "Save for later",
+        "read": "Read"
+      },
+      "desc": {
+        "euFootball": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "euTennis": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "euVolleyball": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "intFootball": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "nba": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "olympicGames": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "ucl": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus."
+      },
+      "name": {
+        "euFootball": "European Football",
+        "euTennis": "European Tennis",
+        "euVolleyball": "European Volleyball",
+        "intFootball": "International Football",
+        "nba": "National Basketball Association",
+        "olympicGames": "Olympic Games",
+        "ucl": "UEFA Champions League"
+      }
+    }
   }
 }
