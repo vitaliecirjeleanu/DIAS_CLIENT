@@ -2,7 +2,7 @@
   <ng-template pTemplate="start">
     <button
       [attr.aria-label]="'toolbar.sidebar' | translate"
-      class="toolbar__button p-link"
+      class="toolbar__button p-link flex flex-column justify-content-center align-items-center text-xs h-3rem w-3rem border-circle transition-all transition-duration-200"
     >
       <i class="pi pi-bars text-2xl"></i>
     </button>
@@ -12,7 +12,7 @@
       @for (action of toolbarActions; track $index) {
       <button
         (click)="action.callback()"
-        class="toolbar__button p-link"
+        class="toolbar__button p-link flex flex-column justify-content-center align-items-center text-xs h-3rem w-3rem border-circle transition-all transition-duration-200"
         data-test-name="toolbarAction"
       >
         <i [ngClass]="action.icon + ' text-2xl'"></i>
@@ -23,7 +23,7 @@
 
       <button
         (click)="toggleTheme()"
-        class="toolbar__button p-link"
+        class="toolbar__button p-link flex flex-column justify-content-center align-items-center text-xs h-3rem w-3rem border-circle transition-all transition-duration-200"
         data-test-name="toggleThemeAction"
       >
         <i
@@ -49,7 +49,7 @@
       <button
         [attr.aria-label]="'avatar.menu' | translate"
         (click)="menu.toggle($event)"
-        class="toolbar__button p-link"
+        class="toolbar__button p-link flex flex-column justify-content-center align-items-center text-xs h-3rem w-3rem border-circle transition-all transition-duration-200"
         data-test-name="toolbarAvatarImage"
       >
         @if (avatar.imagePath) {
