@@ -1,29 +1,59 @@
 {
   "avatar": {
+    "logIn": "Conectare",
+    "logOut": "Deconectare",
+    "menu": "Deschideți Meniul Utilizatorului",
     "settings": "Setări",
-    "signOut": "Deconectare",
-    "signUp": "Înregistrare",
-    "menu": "Deschideți Meniul Utilizatorului"
+    "signUp": "Înregistrare"
+  },
+  "common": {
+    "loading": "Se încarcă"
   },
   "toolbar": {
-    "home": "Acasă",
-    "search": "Căutare",
     "dark": "Întunecat",
+    "home": "Acasă",
     "light": "Luminos",
+    "search": "Căutare",
     "sidebar": "Deschideți Bara Laterală"
   },
   "topics": {
-    "sport": "Sport",
-    "music": "Muzică",
-    "realEstate": "Imobiliare",
-    "trading": "Tranzacționare",
-    "ai": "IA",
-    "automotive": "Automobile",
-    "wealth": "Bogăție",
-    "scouting": "Scouting",
-    "books": "Cărți",
-    "gaming": "Jocuri",
-    "agriculture": "Agricultură",
-    "socialMedia": "Rețele Sociale"
+    "general": {
+      "agriculture": "Agricultură",
+      "ai": "IA",
+      "automotive": "Automobile",
+      "books": "Cărți",
+      "gaming": "Jocuri",
+      "music": "Muzică",
+      "realEstate": "Imobiliare",
+      "scouting": "Scouting",
+      "socialMedia": "Rețele Sociale",
+      "sport": "Sport",
+      "trading": "Tranzacționare",
+      "wealth": "Bogăție"
+    },
+    "specific": {
+      "action": {
+        "save": "Salvează pentru mai târziu",
+        "read": "Citește"
+      },
+      "desc": {
+        "euFootball": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "euTennis": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "euVolleyball": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "intFootball": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "nba": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "olympicGames": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus.",
+        "ucl": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo vero amet modi ab quisquam exercitationem. Eveniet, cum nemo atque asperiores esse deserunt tempore impedit consequatur dolorum, exercitationem porro provident? Temporibus."
+      },
+      "name": {
+        "euFootball": "Fotbal European",
+        "euTennis": "Tenis European",
+        "euVolleyball": "Volei European",
+        "intFootball": "Fotbal Internațional",
+        "nba": "Asociația Națională de Baschet",
+        "olympicGames": "Jocurile Olimpice",
+        "ucl": "Liga Campionilor UEFA"
+      }
+    }
   }
 }

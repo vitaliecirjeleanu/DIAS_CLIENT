@@ -1,3 +1,43 @@
+@if (topics().length) {
+<p-carousel
+  [circular]="true"
+  [numScroll]="1"
+  [numVisible]="3"
+  [responsiveOptions]="RESPONSIVE_OPTIONS"
+  [value]="topics()"
+>
+  <ng-template let-topic pTemplate="item">
+    <div
+      class="flex flex-column border-1 surface-border border-round m-2 p-3 gap-3"
+    >
+      <img
+        [alt]="'topic.specific.name.' + topic | translate"
+        class="border-round w-full h-auto"
+        src="{{ imagesEndpoint }}/{{ topicName }}/{{ topic }}.jpg"
+      />
+
+      <div class="font-bold">
+        {{ "topic.specific.name." + topic | translate }}
+      </div>
+
+      <div class="font-medium">
+        {{ "topic.specific.desc." + topic | translate }}
+      </div>
+      <div class="flex align-items-center justify-content-center gap-3">
+        <p-button
+          [outlined]="true"
+          icon="pi pi-bookmark"
+          size="small"
+          severity="secondary"
+        />
+        <p-button [outlined]="true" icon="pi pi-arrow-right" size="small" />
+      </div>
+    </div>
+  </ng-template>
+</p-carousel>
+
+} @else {
 <p>
-  <strong>{{ topicName }}</strong> page works!
+  Nothing for <strong>{{ topicName }}</strong> topic yet.
 </p>
+}

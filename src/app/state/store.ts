@@ -1,4 +1,4 @@
-import { signalStore, withMethods, withState } from '@ngrx/signals';
+import { signalStore, withHooks, withMethods, withState } from '@ngrx/signals';
 import { State } from './types';
 import { inject } from '@angular/core';
 import { HttpService } from '../../shared/services/http-service/http-service.service';
@@ -17,5 +17,10 @@ export const Store = signalStore(
   withMethods((store, httpService = inject(HttpService)) => ({
     toggleTheme: toggleTheme(store),
     loadTopics: loadTopics(store, httpService),
-  }))
+  })),
+  withHooks({
+    onInit(store) {
+      store.loadTopics();
+    },
+  })
 );

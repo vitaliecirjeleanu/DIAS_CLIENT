@@ -5,6 +5,7 @@ import { HttpService } from '../../shared/services/http-service/http-service.ser
 import { pipe, switchMap, tap } from 'rxjs';
 import { tapResponse } from '@ngrx/operators';
 import { LoadStatus, Theme } from '../../shared/types';
+import { getTopicsVM } from './utils';
 
 export const toggleTheme = (store: StateSignal<State>) => () =>
   patchState(store, (state) => ({
@@ -19,7 +20,10 @@ export const loadTopics = (store: StateSignal<State>, service: HttpService) =>
         return service.getTopics().pipe(
           tapResponse({
             next: (topics) =>
-              patchState(store, { topics, loadStatus: LoadStatus.LOADED }),
+              patchState(store, {
+                topics: getTopicsVM(topics).sort((a, b) => a.id - b.id),
+                loadStatus: LoadStatus.LOADED,
+              }),
             error: () => {
               patchState(store, { loadStatus: LoadStatus.FAILED });
             },
