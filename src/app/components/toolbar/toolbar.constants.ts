@@ -5,7 +5,7 @@ export const AVATAR_DEFAULT_ACTIONS: MenuItem[] = [
     label: 'avatar.settings',
   },
   {
-    label: 'avatar.signOut',
+    label: 'avatar.logOut',
   },
   {
     label: 'avatar.signUp',

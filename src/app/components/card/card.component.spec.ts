@@ -6,8 +6,11 @@ import {
   KeyboardCode,
   KeyboardEventType,
   MouseEventType,
+  TopicVM,
 } from '../../../shared/types';
 import { Router } from '@angular/router';
+import { MockModule } from 'ng-mocks';
+import { TranslateModule } from '@ngx-translate/core';
 
 class MockRouter {
   navigate = jest.fn();
@@ -21,12 +24,13 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardComponent],
+      imports: [CardComponent, MockModule(TranslateModule)],
       providers: [{ provide: Router, useClass: MockRouter }],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
+    component.topic = { name: '', nameL18nKey: '' } as TopicVM;
     fixture.detectChanges();
   });
 

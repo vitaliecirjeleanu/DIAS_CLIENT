@@ -10,11 +10,13 @@
     <div
       class="flex flex-column border-1 surface-border border-round m-2 p-3 gap-3"
     >
-      <img
-        [alt]="'topic.specific.name.' + topic | translate"
-        class="border-round w-full h-auto"
-        src="{{ imagesEndpoint }}/{{ topicName }}/{{ topic }}.jpg"
-      />
+      <div class="h-13rem">
+        <img
+          [alt]="'topic.specific.name.' + topic | translate"
+          class="border-round w-full max-h-13rem"
+          src="{{ imagesEndpoint }}/{{ topicName }}/{{ topic }}.jpg"
+        />
+      </div>
 
       <div class="font-bold">
         {{ "topic.specific.name." + topic | translate }}

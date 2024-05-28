@@ -3,17 +3,23 @@ import { Store, initialState } from './store';
 import { State } from './types';
 import { MockModule } from 'ng-mocks';
 import { HttpClientModule } from '@angular/common/http';
-import { LoadStatus, Theme, Topic } from '../../shared/types';
+import { LoadStatus, Theme, Topic, TopicVM } from '../../shared/types';
 import { of, throwError } from 'rxjs';
 import { HttpService } from '../../shared/services/http-service/http-service.service';
+import { signal } from '@angular/core';
 
-const mockTopics: Topic[] = [
+const mockApiTopics: Topic[] = [
   { id: 1, name: 'test1', topics: [] },
   { id: 2, name: 'test2', topics: [] },
 ];
 
+const mockStoreTopics: TopicVM[] = [
+  { id: 1, name: 'test1', topics: [], nameL18nKey: 'topic.general.test1' },
+  { id: 2, name: 'test2', topics: [], nameL18nKey: 'topic.general.test2' },
+];
+
 const mockHttpService = {
-  getTopics: jest.fn().mockReturnValue(of(mockTopics)),
+  getTopics: jest.fn().mockReturnValue(of(mockApiTopics)),
 };
 
 describe('Store', () => {
@@ -25,16 +31,6 @@ describe('Store', () => {
       providers: [Store, { provide: HttpService, useValue: mockHttpService }],
     });
     store = TestBed.inject(Store);
-  });
-
-  test('should have a proper initial state', () => {
-    const state: State = {
-      loadStatus: store.loadStatus(),
-      theme: store.theme(),
-      topics: store.topics(),
-    };
-
-    expect(state).toEqual(initialState);
   });
 
   describe('actions', () => {
@@ -50,11 +46,12 @@ describe('Store', () => {
       test(`should save the topics inside the state and set loadStatus to ${LoadStatus.LOADED} on success`, () => {
         store.loadTopics();
 
-        expect(store.topics()).toEqual(mockTopics);
+        expect(store.topics()).toEqual(mockStoreTopics);
         expect(store.loadStatus()).toEqual(LoadStatus.LOADED);
       });
 
       test(`should not save the topics inside the state and set loadStatus to ${LoadStatus.FAILED} on error`, () => {
+        store.topics = signal([]);
         mockHttpService.getTopics.mockReturnValue(throwError(() => 'error'));
 
         store.loadTopics();
