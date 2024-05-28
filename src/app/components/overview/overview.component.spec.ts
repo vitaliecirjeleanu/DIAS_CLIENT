@@ -5,12 +5,14 @@ import { By } from '@angular/platform-browser';
 import { bypassLayerError } from '../../../utils/jsdom-layer-error-bypass';
 import { CardComponent } from '../card/card.component';
 import { signal } from '@angular/core';
-import { LoadStatus, Topic } from '../../../shared/types';
+import { LoadStatus, TopicVM } from '../../../shared/types';
 import { Store } from '../../state';
+import { MockComponent, MockModule } from 'ng-mocks';
+import { TranslateModule } from '@ngx-translate/core';
 
-const mockTopics: Topic[] = [
-  { id: 1, name: 'test1', topics: [] },
-  { id: 2, name: 'test2', topics: [] },
+const mockTopics: TopicVM[] = [
+  { id: 1, name: 'test1', topics: [], nameL18nKey: '' },
+  { id: 2, name: 'test2', topics: [], nameL18nKey: '' },
 ];
 
 class MockStore {
@@ -27,7 +29,11 @@ describe('OverviewComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OverviewComponent],
+      imports: [
+        OverviewComponent,
+        MockComponent(CardComponent),
+        MockModule(TranslateModule),
+      ],
       providers: [{ provide: Store, useClass: MockStore }],
     }).compileComponents();
 
