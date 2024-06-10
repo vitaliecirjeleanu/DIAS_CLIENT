@@ -1,13 +1,11 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { bypassLayerError } from '../../../utils/jsdom-layer-error-bypass';
-
-import { ToolbarComponent } from './toolbar.component';
 import { ChangeDetectionStrategy, signal } from '@angular/core';
-import { MouseEventType, Theme } from '../../../shared/types';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { MockModule, MockService } from 'ng-mocks';
-import { provideMockStore } from '../../../utils/tests';
+
+import { bypassLayerError } from '../../../utils/jsdom-layer-error-bypass';
+import { ToolbarComponent } from './toolbar.component';
+import { MouseEventType, Theme } from '../../../shared/types';
+import { TranslateTestingModule, provideMockStore } from '../../../utils/tests';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -17,15 +15,8 @@ describe('ToolbarComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        ToolbarComponent,
-        NoopAnimationsModule,
-        MockModule(TranslateModule),
-      ],
-      providers: [
-        { provide: TranslateService, useValue: MockService(TranslateService) },
-        provideMockStore(),
-      ],
+      imports: [ToolbarComponent, NoopAnimationsModule, TranslateTestingModule],
+      providers: [provideMockStore()],
     })
       .overrideComponent(ToolbarComponent, {
         set: { changeDetection: ChangeDetectionStrategy.Default },

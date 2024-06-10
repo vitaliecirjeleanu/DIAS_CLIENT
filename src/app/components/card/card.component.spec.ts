@@ -9,8 +9,7 @@ import {
   TopicVM,
 } from '../../../shared/types';
 import { Router } from '@angular/router';
-import { MockModule } from 'ng-mocks';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateTestingModule } from '../../../utils/tests';
 
 class MockRouter {
   navigate = jest.fn();
@@ -24,7 +23,7 @@ describe('CardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CardComponent, MockModule(TranslateModule)],
+      imports: [CardComponent, TranslateTestingModule],
       providers: [{ provide: Router, useClass: MockRouter }],
     }).compileComponents();
 

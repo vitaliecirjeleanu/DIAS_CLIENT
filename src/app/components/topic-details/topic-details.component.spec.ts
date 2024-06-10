@@ -1,9 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopicDetailsComponent } from './topic-details.component';
-import { MockModule, MockService } from 'ng-mocks';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import {
+  TranslateTestingModule,
   provideMockActivatedRoute,
   provideMockStore,
 } from '../../../utils/tests';
@@ -15,9 +14,8 @@ describe('TopicDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TopicDetailsComponent, MockModule(TranslateModule)],
+      imports: [TopicDetailsComponent, TranslateTestingModule],
       providers: [
-        { provide: TranslateService, useValue: MockService(TranslateService) },
         provideMockStore(),
         provideMockActivatedRoute({ snapshot: true, paramMap: true }, [
           { key: 'name', value: topicName },

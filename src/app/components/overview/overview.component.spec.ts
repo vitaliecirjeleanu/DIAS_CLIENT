@@ -4,10 +4,10 @@ import { OverviewComponent } from './overview.component';
 import { By } from '@angular/platform-browser';
 import { bypassLayerError } from '../../../utils/jsdom-layer-error-bypass';
 import { CardComponent } from '../card/card.component';
-import { MockComponent, MockModule } from 'ng-mocks';
-import { TranslateModule } from '@ngx-translate/core';
+import { MockComponent } from 'ng-mocks';
 import { provideMockStore } from '../../../utils/tests/helpers';
 import { mockTopics } from '../../../utils/tests/mocks';
+import { TranslateTestingModule } from '../../../utils/tests';
 
 describe('OverviewComponent', () => {
   let component: OverviewComponent;
@@ -20,7 +20,7 @@ describe('OverviewComponent', () => {
       imports: [
         OverviewComponent,
         MockComponent(CardComponent),
-        MockModule(TranslateModule),
+        TranslateTestingModule,
       ],
       providers: [provideMockStore()],
     }).compileComponents();
