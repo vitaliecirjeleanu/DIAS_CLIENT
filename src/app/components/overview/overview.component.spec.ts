@@ -4,22 +4,10 @@ import { OverviewComponent } from './overview.component';
 import { By } from '@angular/platform-browser';
 import { bypassLayerError } from '../../../utils/jsdom-layer-error-bypass';
 import { CardComponent } from '../card/card.component';
-import { signal } from '@angular/core';
-import { LoadStatus, TopicVM } from '../../../shared/types';
-import { Store } from '../../state';
 import { MockComponent, MockModule } from 'ng-mocks';
 import { TranslateModule } from '@ngx-translate/core';
-
-const mockTopics: TopicVM[] = [
-  { id: 1, name: 'test1', topics: [], nameL18nKey: '' },
-  { id: 2, name: 'test2', topics: [], nameL18nKey: '' },
-];
-
-class MockStore {
-  loadStatus = signal(LoadStatus.LOADED);
-  topics = signal(mockTopics);
-  loadTopics = jest.fn();
-}
+import { provideMockStore } from '../../../utils/tests/helpers';
+import { mockTopics } from '../../../utils/tests/mocks';
 
 describe('OverviewComponent', () => {
   let component: OverviewComponent;
@@ -34,7 +22,7 @@ describe('OverviewComponent', () => {
         MockComponent(CardComponent),
         MockModule(TranslateModule),
       ],
-      providers: [{ provide: Store, useClass: MockStore }],
+      providers: [provideMockStore()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(OverviewComponent);

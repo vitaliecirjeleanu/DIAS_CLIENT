@@ -5,14 +5,9 @@ import { ToolbarComponent } from './toolbar.component';
 import { ChangeDetectionStrategy, signal } from '@angular/core';
 import { MouseEventType, Theme } from '../../../shared/types';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Store } from '../../state';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MockModule, MockService } from 'ng-mocks';
-
-class MockStore {
-  theme = signal(Theme.LIGHT);
-  toggleTheme = jest.fn();
-}
+import { provideMockStore } from '../../../utils/tests';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -28,8 +23,8 @@ describe('ToolbarComponent', () => {
         MockModule(TranslateModule),
       ],
       providers: [
-        { provide: Store, useClass: MockStore },
         { provide: TranslateService, useValue: MockService(TranslateService) },
+        provideMockStore(),
       ],
     })
       .overrideComponent(ToolbarComponent, {

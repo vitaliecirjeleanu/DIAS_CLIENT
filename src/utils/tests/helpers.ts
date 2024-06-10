@@ -1,4 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '../../app/state';
+import { MockStore } from './mocks';
 
 export const provideMockActivatedRoute = (
   options: any = { snapshot: true, paramMap: true },
@@ -16,3 +18,5 @@ export const provideMockActivatedRoute = (
 
   return { provide: ActivatedRoute, useValue: mockActivatedRoute };
 };
+
+export const provideMockStore = () => ({ provide: Store, useClass: MockStore });
