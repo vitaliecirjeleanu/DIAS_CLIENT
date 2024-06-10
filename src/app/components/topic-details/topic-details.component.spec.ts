@@ -1,23 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TopicDetailsComponent } from './topic-details.component';
-import { ActivatedRoute } from '@angular/router';
 import { MockModule, MockService } from 'ng-mocks';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { signal } from '@angular/core';
 import { Store } from '../../state';
+import { provideMockActivatedRoute } from '../../../utils/tests';
 
 class MockStore {
   topics = signal([]);
 }
 
 const topicName = 'testName';
-
-const mockActivatedRoute = {
-  snapshot: {
-    paramMap: new Map().set('name', topicName),
-  },
-};
 
 describe('TopicDetailsComponent', () => {
   let component: TopicDetailsComponent;
@@ -28,8 +22,10 @@ describe('TopicDetailsComponent', () => {
       imports: [TopicDetailsComponent, MockModule(TranslateModule)],
       providers: [
         { provide: Store, useClass: MockStore },
-        { provide: ActivatedRoute, useValue: mockActivatedRoute },
         { provide: TranslateService, useValue: MockService(TranslateService) },
+        provideMockActivatedRoute({ snapshot: true, paramMap: true }, [
+          { key: 'name', value: topicName },
+        ]),
       ],
     }).compileComponents();
 
