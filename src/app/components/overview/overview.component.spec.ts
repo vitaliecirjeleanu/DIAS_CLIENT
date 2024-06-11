@@ -8,6 +8,9 @@ import { MockComponent } from 'ng-mocks';
 import { provideMockStore } from '../../../utils/tests/helpers';
 import { mockTopics } from '../../../utils/tests/mocks';
 import { TranslateTestingModule } from '../../../utils/tests';
+import { ChangeDetectionStrategy, signal } from '@angular/core';
+import { LoadStatus } from '../../../shared/types';
+import { ProgressSpinner } from 'primeng/progressspinner';
 
 describe('OverviewComponent', () => {
   let component: OverviewComponent;
@@ -23,11 +26,23 @@ describe('OverviewComponent', () => {
         TranslateTestingModule,
       ],
       providers: [provideMockStore()],
-    }).compileComponents();
+    })
+      .overrideComponent(OverviewComponent, {
+        set: { changeDetection: ChangeDetectionStrategy.Default },
+      })
+      .compileComponents();
 
     fixture = TestBed.createComponent(OverviewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  test('should display progress spinner when loading', () => {
+    (component.isLoading as any) = signal(LoadStatus.LOADING);
+    fixture.detectChanges();
+    expect(
+      fixture.debugElement.query(By.directive(ProgressSpinner))
+    ).toBeTruthy();
   });
 
   test('should have the proper number of cards', () => {

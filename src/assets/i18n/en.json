@@ -16,6 +16,9 @@
     "search": "Search",
     "sidebar": "Open Sidebar"
   },
+  "footer": {
+    "text": "© 2024 DIAS - All Rights Reserved."
+  },
   "topic": {
     "general": {
       "agriculture": "Agriculture",
@@ -53,7 +56,8 @@
         "nba": "National Basketball Association",
         "olympicGames": "Olympic Games",
         "ucl": "UEFA Champions League"
-      }
+      },
+      "empty": "There is nothing for this topic yet."
     }
   }
 }

@@ -6,6 +6,7 @@ import { bypassLayerError } from '../../../utils/jsdom-layer-error-bypass';
 import { ToolbarComponent } from './toolbar.component';
 import { MouseEventType, Theme } from '../../../shared/types';
 import { TranslateTestingModule, provideMockStore } from '../../../utils/tests';
+import { AVATAR_DEFAULT_ACTIONS } from './toolbar.constants';
 
 describe('ToolbarComponent', () => {
   let component: ToolbarComponent;
@@ -71,8 +72,10 @@ describe('ToolbarComponent', () => {
         expect(themeAction.firstElementChild?.className).toContain('pi-moon');
       });
 
-      xtest('should have the proper label on light theme', () => {
-        expect(themeAction.lastElementChild?.textContent).toEqual('Dark');
+      test('should have the proper label on light theme', () => {
+        expect(themeAction.lastElementChild?.textContent).toEqual(
+          'toolbar.dark'
+        );
       });
 
       test('should contain sun icon on dark theme', () => {
@@ -83,12 +86,14 @@ describe('ToolbarComponent', () => {
         expect(themeAction.firstElementChild?.className).toContain('pi-sun');
       });
 
-      xtest('should have the proper label on dark theme', () => {
+      test('should have the proper label on dark theme', () => {
         component.theme = signal(Theme.DARK);
 
         fixture.detectChanges();
 
-        expect(themeAction.lastElementChild?.textContent).toEqual('Light');
+        expect(themeAction.lastElementChild?.textContent).toEqual(
+          'toolbar.light'
+        );
       });
 
       test('should toggle the theme when clicked', () => {
@@ -109,15 +114,32 @@ describe('ToolbarComponent', () => {
         expect(avatar).toBeTruthy();
       });
 
-      test('should display a menu when the image is clicked', () => {
-        const avatarImage: HTMLElement = fixture.nativeElement.querySelector(
-          '[data-test-name="toolbarAvatarImage"]'
-        );
-        avatarImage.dispatchEvent(new MouseEvent(MouseEventType.Click));
-        fixture.detectChanges();
-        const menu = fixture.nativeElement.querySelector('.p-menu');
+      describe('menu', () => {
+        let menu: HTMLElement;
 
-        expect(menu).toBeTruthy();
+        beforeEach(() => {
+          const avatarImage: HTMLElement = fixture.nativeElement.querySelector(
+            '[data-test-name="toolbarAvatarImage"]'
+          );
+          avatarImage.dispatchEvent(new MouseEvent(MouseEventType.Click));
+          fixture.detectChanges();
+          menu = fixture.nativeElement.querySelector('.p-menu');
+        });
+
+        test('should be displayed when the image is clicked', () => {
+          expect(menu).toBeTruthy();
+        });
+
+        test('should have the proper actions', () => {
+          const menuActions = Array.from(
+            menu.firstElementChild?.children as HTMLCollection
+          );
+          menuActions.forEach((action, idx) =>
+            expect(action.textContent).toEqual(
+              AVATAR_DEFAULT_ACTIONS[idx].label
+            )
+          );
+        });
       });
 
       describe('image', () => {
@@ -129,10 +151,13 @@ describe('ToolbarComponent', () => {
           );
         });
 
-        test('should display an image if a path is provided', () => {
+        test('should display an icon if a path is not provided', () => {
           expect(avatarImage.firstElementChild instanceof HTMLElement).toBe(
             true
           );
+          expect(
+            avatarImage.firstElementChild instanceof HTMLImageElement
+          ).toBe(false);
         });
 
         test('should display an image if a path is provided', () => {

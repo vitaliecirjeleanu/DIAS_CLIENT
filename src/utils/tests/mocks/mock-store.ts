@@ -2,7 +2,12 @@ import { signal } from '@angular/core';
 import { LoadStatus, Theme, TopicVM } from '../../../shared/types';
 
 export const mockTopics: TopicVM[] = [
-  { id: 1, name: 'test1', topics: [], nameL18nKey: '' },
+  {
+    id: 1,
+    name: 'test1',
+    topics: ['first topic', 'second topic'],
+    nameL18nKey: '',
+  },
   { id: 2, name: 'test2', topics: [], nameL18nKey: '' },
 ];
 
