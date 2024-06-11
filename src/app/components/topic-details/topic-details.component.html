@@ -9,6 +9,7 @@
   <ng-template let-topic pTemplate="item">
     <div
       class="flex flex-column border-1 surface-border border-round m-2 p-3 gap-3"
+      data-test-name="topicItem"
     >
       <div class="h-13rem">
         <img
@@ -39,7 +40,7 @@
 </p-carousel>
 
 } @else {
-<p>
-  Nothing for <strong>{{ topicName }}</strong> topic yet.
+<p data-test-name="emptyMessage">
+  {{ "topic.specific.empty" | translate }}
 </p>
 }

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FooterComponent } from './footer.component';
+import { TranslateTestingModule } from '../../../utils/tests';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;
@@ -8,7 +9,7 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FooterComponent],
+      imports: [FooterComponent, TranslateTestingModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FooterComponent);
@@ -16,7 +17,7 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
   });
 
-  test('should create', () => {
-    expect(component).toBeTruthy();
+  test('should have the proper text', () => {
+    expect(fixture.nativeElement.textContent).toEqual('footer.text');
   });
 });

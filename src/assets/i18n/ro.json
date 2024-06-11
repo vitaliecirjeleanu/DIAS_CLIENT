@@ -16,6 +16,9 @@
     "search": "Căutare",
     "sidebar": "Deschideți Bara Laterală"
   },
+  "footer": {
+    "text": "© 2024 DIAS - Toate Drepturile Rezervate."
+  },
   "topic": {
     "general": {
       "agriculture": "Agricultură",
@@ -53,7 +56,8 @@
         "nba": "Asociația Națională de Baschet",
         "olympicGames": "Jocurile Olimpice",
         "ucl": "Liga Campionilor UEFA"
-      }
+      },
+      "empty": "Nu există încă nimic pentru acest subiect."
     }
   }
 }
