@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { ScrollTopModule } from 'primeng/scrolltop';
 
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
@@ -20,6 +21,7 @@ import { provideAppInitializer } from './app.providers';
     BrowserModule,
     FooterComponent,
     HttpClientModule,
+    ScrollTopModule,
     ToolbarComponent,
     TranslateModule.forRoot(TRANSLATION_CONFIG),
   ],

@@ -1,10 +1,15 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { MockComponents, MockModule } from 'ng-mocks';
+
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { RouterModule } from '@angular/router';
+
 import { PrimeNGConfig } from 'primeng/api';
+import { ScrollTop, ScrollTopModule } from 'primeng/scrolltop';
+
+import { RouterModule } from '@angular/router';
+import { By } from '@angular/platform-browser';
 
 const mockPrimeNGConfig: Partial<PrimeNGConfig> = {
   ripple: false,
@@ -16,7 +21,7 @@ describe('AppComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MockModule(RouterModule)],
+      imports: [MockModule(RouterModule), MockModule(ScrollTopModule)],
       declarations: [
         AppComponent,
         MockComponents(ToolbarComponent, FooterComponent),
@@ -53,6 +58,13 @@ describe('AppComponent', () => {
         '[data-test-name="global-footer"]'
       );
       expect(footer).toBeTruthy();
+    });
+
+    test('should display the scroll top button', () => {
+      const scrollTopButton = fixture.debugElement.query(
+        By.directive(ScrollTop)
+      );
+      expect(scrollTopButton).toBeTruthy();
     });
   });
 });
