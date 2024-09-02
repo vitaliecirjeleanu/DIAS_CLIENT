@@ -1,8 +1,7 @@
 import { TestBed } from '@angular/core/testing';
-import { Store, initialState } from './store';
-import { State } from './types';
-import { MockModule } from 'ng-mocks';
-import { HttpClientModule } from '@angular/common/http';
+import { Store } from './store';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { LoadStatus, Theme, Topic, TopicVM } from '../../shared/types';
 import { of, throwError } from 'rxjs';
 import { HttpService } from '../../shared/services/http-service/http-service.service';
@@ -27,8 +26,12 @@ describe('Store', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MockModule(HttpClientModule)],
-      providers: [Store, { provide: HttpService, useValue: mockHttpService }],
+      providers: [
+        Store,
+        provideHttpClient(),
+        provideHttpClientTesting(),
+        { provide: HttpService, useValue: mockHttpService },
+      ],
     });
     store = TestBed.inject(Store);
   });

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { TranslateModule } from '@ngx-translate/core';
@@ -20,12 +20,11 @@ import { provideAppInitializer } from './app.providers';
     BrowserAnimationsModule,
     BrowserModule,
     FooterComponent,
-    HttpClientModule,
     ScrollTopModule,
     ToolbarComponent,
     TranslateModule.forRoot(TRANSLATION_CONFIG),
   ],
-  providers: [provideAppInitializer()],
+  providers: [provideAppInitializer(), provideHttpClient()],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
