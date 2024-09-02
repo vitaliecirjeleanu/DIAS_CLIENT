@@ -1,15 +1,16 @@
 import { TestBed } from '@angular/core/testing';
 
 import { HttpService } from './http-service.service';
-import { MockModule, MockService } from 'ng-mocks';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient } from '@angular/common/http';
+import { provideHttpClientTesting } from '@angular/common/http/testing';
+import {} from '@angular/common/http';
 
 describe('HttpService', () => {
   let service: HttpService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [MockModule(HttpClientModule)],
+      providers: [provideHttpClient(), provideHttpClientTesting()],
     });
     service = TestBed.inject(HttpService);
   });
